@@ -21,9 +21,12 @@ namespace DierentuinWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
+
+            DierentuinWrapPanel = new WrapPanel();
 
             #region Pseudocode
             /* Deel 1
@@ -40,13 +43,21 @@ namespace DierentuinWPF
             9. Sterfte/verwijderen uit verzameling
             */
             #endregion
-                    
+        }
 
+        List<Animal> Zoo = new List<Animal>();
+
+        public static void UpdateWrapPanel()
+        {
+            //Weergave updaten.
+            
         }
 
         private void AddMonkeyButton_Click(object sender, RoutedEventArgs e)
         {
             Monkey test = new Monkey();
+            Zoo.Add(test);
+            
         }
     }
 }

@@ -26,7 +26,9 @@
         <Button x:Name="FeedMonkeyButton" Content="Feed Monkey" HorizontalAlignment="Center" VerticalAlignment="Top" Height="76" Width="93" Margin="0,98,0,0" Grid.Row="1"/>
         <Button x:Name="FeedLionButton" Content="Feed Lion" HorizontalAlignment="Center" VerticalAlignment="Top" Height="76" Width="93" Margin="0,187,0,0" Grid.Row="1"/>
         <Button x:Name="FeedElephantButton" Content="Feed Elephant" HorizontalAlignment="Center" VerticalAlignment="Top" Height="76" Width="93" Margin="0,277,0,0" Grid.Row="1"/>
-        <WrapPanel Grid.Column="1" Grid.Row="1"/>
+        <WrapPanel x:Name="DierentuinWrapPanel" Grid.Column="1" Grid.Row="1">
+            <ListBox/>
+        </WrapPanel>
 
     </Grid>
 </Window>
