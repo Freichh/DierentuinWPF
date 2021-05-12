@@ -36,6 +36,11 @@ namespace DierentuinWPF
             7. Timer 
             8. Energiebalk
             9. Sterfte/verwijderen uit verzameling
+
+
+            AddAnimal
+            - Per soort aan list toevoegen
+                - ID / Naam / energyvalue
             */
             #endregion
         }
@@ -79,11 +84,15 @@ namespace DierentuinWPF
             test.Start();
             DierentuinWrapPanel.Children.Add(Unit);
 
+
             void test_Tick(object sender, EventArgs e)
             {
                 // Updating the Label which displays the current second
-                Lifebar.Value -= 10;
-
+                Lifebar.Value -= 1;
+                if (Lifebar.Value <= 0)
+                {
+                    DierentuinWrapPanel.Children.Remove(Unit);
+                }
             }
         }
 
