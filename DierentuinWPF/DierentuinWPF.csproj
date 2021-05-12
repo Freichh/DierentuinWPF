@@ -6,4 +6,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\Elephant.jpg" />
+    <None Remove="Images\Lion.jpg" />
+    <None Remove="Images\Monkey.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Elephant.jpg" />
+    <Resource Include="Images\Lion.jpg" />
+    <Resource Include="Images\Monkey.jpg" />
+  </ItemGroup>
+
 </Project>

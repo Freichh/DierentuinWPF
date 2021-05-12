@@ -8,5 +8,9 @@ namespace DierentuinWPF.Models
 {
     class Lion : Animal
     {
+        public Lion()
+        {
+            this.Name = "Lion";
+        }
     }
 }

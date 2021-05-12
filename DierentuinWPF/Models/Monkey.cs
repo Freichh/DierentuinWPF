@@ -8,7 +8,11 @@ namespace DierentuinWPF.Models
 {
     class Monkey : Animal
     {
-        
+        public Monkey()
+        {
+            Energy = 60;
+            Name = "Monkey";
+        }
 
     }
 }

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
 using DierentuinWPF.Models;
 
 namespace DierentuinWPF
@@ -21,43 +23,54 @@ namespace DierentuinWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Pseudocode
+        /* Deel 1
+        1. Maak base class Animal, inh Monkey, Lion, Elephant
+        2. De class heeft ook een methode Eat die de energie van een dier doet toenemen met 25
+        3. Maak de GUI
+        4. Is, as, OfType<T> experimenten/uitzoeken
+        * Deel 2
+        5. Methods om dieren te voeren
+        6. Dieren kunnen toevoegen aan main veld met knoppen
+        * Deel 3
+        7. Timer 
+        8. Energiebalk
+        9. Sterfte/verwijderen uit verzameling
+        */
+        #endregion
+
+        // Ongeveer zelfde als een List, maar deze update de UI realtime i.c.m. INotifyPropertyChanged
+        ObservableCollection<Animal> zoo = new ObservableCollection<Animal>();
 
         public MainWindow()
         {
             InitializeComponent();
 
-            DierentuinWrapPanel = new WrapPanel();
-
-            #region Pseudocode
-            /* Deel 1
-            1. Maak base class Animal, inh Monkey, Lion, Elephant
-            2. De class heeft ook een methode Eat die de energie van een dier doet toenemen met 25
-            3. Maak de GUI
-            4. Is, as, OfType<T> experimenten/uitzoeken
-            * Deel 2
-            5. Methods om dieren te voeren
-            6. Dieren kunnen toevoegen aan main veld met knoppen
-            * Deel 3
-            7. Timer 
-            8. Energiebalk
-            9. Sterfte/verwijderen uit verzameling
+            /*
+            // Testdieren toevoegen aan ObservableCollection zoo
+            zoo.Add(new Monkey());
+            zoo.Add(new Lion());
+            zoo.Add(new Elephant());
             */
-            #endregion
+
+            // Maak zoo de ItemsSource voor ItemsControl activeAnimals
+            activeAnimals.ItemsSource = zoo;
         }
 
-        List<Animal> Zoo = new List<Animal>();
-
-        public static void UpdateWrapPanel()
-        {
-            //Weergave updaten.
-            
-        }
-
+        
         private void AddMonkeyButton_Click(object sender, RoutedEventArgs e)
         {
-            Monkey test = new Monkey();
-            Zoo.Add(test);
-            
+            zoo.Add(new Monkey());
+        }
+
+        private void AddLionButton_Click(object sender, RoutedEventArgs e)
+        {
+            zoo.Add(new Lion());
+        }
+
+        private void AddElephantButton_Click(object sender, RoutedEventArgs e)
+        {
+            zoo.Add(new Elephant());
         }
     }
 }
