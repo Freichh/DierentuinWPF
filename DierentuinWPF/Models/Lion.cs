@@ -10,7 +10,9 @@ namespace DierentuinWPF.Models
     {
         public Lion()
         {
-            this.Name = "Lion";
+            Name = "Lion";
+            EatQuantity = 25;
         }
+
     }
 }

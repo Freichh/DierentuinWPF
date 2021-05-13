@@ -7,15 +7,35 @@ using System.Collections.ObjectModel;
 namespace DierentuinWPF.Models
 {
     // INotifyPropertyChanged toegevoegd aan Animal
-    class Animal : INotifyPropertyChanged
+    abstract class Animal : INotifyPropertyChanged
     {
-        public string Name { get; set; }
-        public int Energy { get; set; } = 100;
-
-        public static int Eat(int energy)
+        public Animal()
         {
-            energy += 25;
-            return energy;
+            // waarom werkt energy = 100; ook?
+            Energy = 100;
+        }
+
+        public string Name { get; set; }
+        public int EatQuantity { get; set; }
+
+        private int energy;
+        public int Energy
+        {
+            get { return energy; }
+            set 
+            { 
+                energy = value;
+                this.NotifyPropertyChanged("Energy");
+            }
+        }
+
+        public virtual int Eat()
+        {
+            if (Energy < 100)
+            {
+                Energy += EatQuantity;
+            }
+            return Energy;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

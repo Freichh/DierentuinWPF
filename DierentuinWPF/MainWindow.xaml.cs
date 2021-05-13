@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using DierentuinWPF.Models;
+using System.Windows.Threading;
 
 namespace DierentuinWPF
 {
@@ -46,19 +47,18 @@ namespace DierentuinWPF
         {
             InitializeComponent();
 
-            
-            /*
-            // Testdieren toevoegen aan ObservableCollection zoo
-            zoo.Add(new Monkey());
-            zoo.Add(new Lion());
-            zoo.Add(new Elephant());
-            */
-
             // Maak zoo de ItemsSource voor ItemsControl activeAnimals
             activeAnimals.ItemsSource = zoo;
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+
+
         }
 
-        
+        #region Dieren toevoegen buttons
         private void AddMonkeyButton_Click(object sender, RoutedEventArgs e)
         {
             zoo.Add(new Monkey());
@@ -73,5 +73,52 @@ namespace DierentuinWPF
         {
             zoo.Add(new Elephant());
         }
+        #endregion
+
+        #region Dieren voeren buttons
+        private void FeedMonkeyButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var monkey in zoo)
+            {
+                if (monkey is Monkey)
+                {
+                    monkey.Eat();
+                }
+            }
+        }
+        private void FeedLionButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var lion in zoo)
+            {
+                if (lion is Lion)
+                {
+                    lion.Eat();
+                }
+            }
+        }
+
+        private void FeedElephantButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var elephant in zoo)
+            {
+                if (elephant is Elephant)
+                {
+                    elephant.Eat();
+                }
+            }
+        }
+
+        private void FeedAllButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var animal in zoo)
+            {
+                animal.Eat();
+            }
+        }
+
+
+        #endregion
+
+
     }
 }

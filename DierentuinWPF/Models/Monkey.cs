@@ -12,6 +12,7 @@ namespace DierentuinWPF.Models
         {
             Energy = 60;
             Name = "Monkey";
+            EatQuantity = 10;
         }
 
     }

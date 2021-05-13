@@ -44,10 +44,10 @@
         <Button x:Name="ResetButton" Content="Reset" Width="90" Margin="10"/>
         
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Margin="10" Background="Azure">
-            <Button x:Name="FeedAllButton" Content="Feed All" Height="70" Margin="0 0 0 10"/>
-            <Button x:Name="FeedMonkeyButton" Content="Feed Monkey" Height="70" Margin="0 0 0 10"/>
-            <Button x:Name="FeedLionButton" Content="Feed Lion" Height="70" Margin="0 0 0 10"/>
-            <Button x:Name="FeedElephantButton" Content="Feed Elephant" Height="70" Margin="0 0 0 10"/>
+            <Button x:Name="FeedAllButton" Content="Feed All" Height="70" Margin="0 0 0 10" Click="FeedAllButton_Click"/>
+            <Button x:Name="FeedMonkeyButton" Content="Feed Monkey" Height="70" Margin="0 0 0 10" Click="FeedMonkeyButton_Click"/>
+            <Button x:Name="FeedLionButton" Content="Feed Lion" Height="70" Margin="0 0 0 10" Click="FeedLionButton_Click"/>
+            <Button x:Name="FeedElephantButton" Content="Feed Elephant" Height="70" Margin="0 0 0 10" Click="FeedElephantButton_Click"/>
         </StackPanel>
     </Grid>
 </Window>
