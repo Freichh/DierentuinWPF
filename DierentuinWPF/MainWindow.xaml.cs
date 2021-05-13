@@ -16,6 +16,7 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using DierentuinWPF.Models;
 using System.Windows.Threading;
+using System.Diagnostics;
 
 namespace DierentuinWPF
 {
@@ -43,6 +44,10 @@ namespace DierentuinWPF
         // Ongeveer zelfde als een List, maar deze update de UI realtime i.c.m. INotifyPropertyChanged
         ObservableCollection<Animal> zoo = new ObservableCollection<Animal>();
 
+        // Global timer en interval
+        DispatcherTimer timer = new DispatcherTimer();
+        double intervalMilliseconds;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -50,8 +55,9 @@ namespace DierentuinWPF
             // Maak zoo de ItemsSource voor ItemsControl activeAnimals
             activeAnimals.ItemsSource = zoo;
 
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
+
+            
+            timer.Interval = TimeSpan.FromMilliseconds(intervalMilliseconds);
             timer.Tick += timer_Tick;
             timer.Start();
 
@@ -128,8 +134,15 @@ namespace DierentuinWPF
         }
 
 
+
         #endregion
 
-
+        // Update interval van lopende timer
+        private void IntervalSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            intervalMilliseconds = IntervalSlider.Value;
+            Debug.WriteLine(intervalMilliseconds);
+            timer.Interval = TimeSpan.FromMilliseconds(intervalMilliseconds);
+        }
     }
 }
