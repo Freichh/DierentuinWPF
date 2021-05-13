@@ -51,10 +51,21 @@ namespace DierentuinWPF
             activeAnimals.ItemsSource = zoo;
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(1);
+            timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
 
+            void timer_Tick(object sender, EventArgs e)
+            {
+                foreach (var animal in zoo)
+                {
+                    animal.UseEnergy();
+                    if (animal.Energy <= 0)
+                    {
+                        zoo.Remove(animal);
+                    }
+                }
+            }
 
         }
 

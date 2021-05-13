@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace DierentuinWPF.Models
 {
-    // INotifyPropertyChanged toegevoegd aan Animal
+   
     abstract class Animal : INotifyPropertyChanged
     {
         public Animal()
@@ -17,6 +17,7 @@ namespace DierentuinWPF.Models
 
         public string Name { get; set; }
         public int EatQuantity { get; set; }
+        public int UseQuantity { get; set; }
 
         private int energy;
         public int Energy
@@ -29,14 +30,23 @@ namespace DierentuinWPF.Models
             }
         }
 
-        public virtual int Eat()
+        // Elk dier eet zijn eigen EatQuantity
+        public int Eat()
         {
             if (Energy < 100)
             {
                 Energy += EatQuantity;
             }
+            if (Energy > 100)
+            {
+                Energy = 100;
+            }
             return Energy;
         }
+
+        // (Abstracte method volgens opdracht) Elk dier verbruikt zijn eigen UseQuantity
+        public abstract int UseEnergy();
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

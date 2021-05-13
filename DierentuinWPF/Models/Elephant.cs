@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 namespace DierentuinWPF.Models
 {
-    class Elephant : Animal
+    // Sealed can't be inherited
+    sealed class Elephant : Animal
     {
         public Elephant()
         {
             Name = "Elephant";
             EatQuantity = 50;
+            UseQuantity = 5;
+        }
+        
+        public override int UseEnergy()
+        {
+            Energy -= UseQuantity;
+            return Energy;
         }
 
     }
