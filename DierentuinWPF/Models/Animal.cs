@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Drawing;
 
 namespace DierentuinWPF.Models
 {
@@ -12,13 +14,15 @@ namespace DierentuinWPF.Models
         public string Name { get; set; }
         public int Energy { get; set; } = 100;
 
-        
-        public static int Eat(int energy)
+        public Animal()
         {
-            energy += 25;
-            return energy;
-        }
 
+        }
+        
+        public void Eat()
+        {
+            this.Energy += 25;
+        }
     }
 
 

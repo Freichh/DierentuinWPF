@@ -10,8 +10,9 @@ namespace DierentuinWPF.Models
     {
         public Monkey()
         {
-            Energy = 60;
-        }
+            //EnergyBar.Value = 60;
 
+        }
+        
     }
 }

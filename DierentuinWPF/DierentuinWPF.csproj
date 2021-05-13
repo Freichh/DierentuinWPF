@@ -9,10 +9,16 @@
   <ItemGroup>
     <None Remove="Elephant.jpg" />
     <None Remove="Monkey.jpg" />
+    <None Remove="Resources\Elephant.jpg" />
+    <None Remove="Resources\Lion.jpg" />
+    <None Remove="Resources\Monkey.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Monkey.jpg" />
+    <Resource Include="Resources\Elephant.jpg" />
+    <Resource Include="Resources\Lion.jpg" />
+    <Resource Include="Resources\Monkey.jpg" />
   </ItemGroup>
 
   <ItemGroup>
