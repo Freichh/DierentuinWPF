@@ -42,11 +42,12 @@ namespace DierentuinWPF
         #endregion
 
         // Ongeveer zelfde als een List, maar deze update de UI realtime i.c.m. INotifyPropertyChanged
-        ObservableCollection<Animal> zoo = new ObservableCollection<Animal>();
+        // readonly = referentie mag niet aangepast worden (niet overschrijven)
+        readonly ObservableCollection<Animal> zoo = new();
 
-        // Global timer en interval
-        DispatcherTimer timer = new DispatcherTimer();
-        double intervalMilliseconds;
+        // Global timer
+        readonly DispatcherTimer timer = new();
+        const double initialIntervalMilliseconds = 500;
 
         public MainWindow()
         {
@@ -56,21 +57,34 @@ namespace DierentuinWPF
             activeAnimals.ItemsSource = zoo;
 
 
-            
-            timer.Interval = TimeSpan.FromMilliseconds(intervalMilliseconds);
+            // Default interval = 500ms
+            timer.Interval = TimeSpan.FromMilliseconds(initialIntervalMilliseconds);
             timer.Tick += timer_Tick;
             timer.Start();
 
             void timer_Tick(object sender, EventArgs e)
             {
-                foreach (var animal in zoo)
+                if (zoo.Count < 1)
                 {
+                    return;
+                }
+                // kopie maken van lijst, uit kopie dieren uit halen, en andere lijst loopen
+                var copyZoo = zoo.ToList();
+                // foreach stelt al vast hoe vaak hij loopt
+                foreach (var animal in copyZoo)
+                {
+                    // Weghalen tijdens loopen geeft crash, want komt niet meer overeen met wat het was
                     animal.UseEnergy();
+
                     if (animal.Energy <= 0)
                     {
                         zoo.Remove(animal);
                     }
                 }
+                // Overschrijf lijst met lijst weggehaalde dieren
+                // Overschrijven van lijst werkt niet in dit geval (misschien met INotifyPropertyChanged
+                //zoo = new ObservableCollection<Animal>(copyZoo);
+
             }
 
         }
@@ -92,35 +106,37 @@ namespace DierentuinWPF
         }
         #endregion
 
+        // sender en RoutedEventArgs uitzoeken, generiek instantie creeren
+
         #region Dieren voeren buttons
         private void FeedMonkeyButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var monkey in zoo)
+            foreach (var animal in zoo)
             {
-                if (monkey is Monkey)
+                if (animal is Monkey)
                 {
-                    monkey.Eat();
+                    animal.Eat();
                 }
             }
         }
         private void FeedLionButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var lion in zoo)
+            foreach (var animal in zoo)
             {
-                if (lion is Lion)
+                if (animal is Lion)
                 {
-                    lion.Eat();
+                    animal.Eat();
                 }
             }
         }
 
         private void FeedElephantButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var elephant in zoo)
+            foreach (var animal in zoo)
             {
-                if (elephant is Elephant)
+                if (animal is Elephant)
                 {
-                    elephant.Eat();
+                    animal.Eat();
                 }
             }
         }
@@ -140,9 +156,16 @@ namespace DierentuinWPF
         // Update interval van lopende timer
         private void IntervalSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            intervalMilliseconds = IntervalSlider.Value;
-            Debug.WriteLine(intervalMilliseconds);
-            timer.Interval = TimeSpan.FromMilliseconds(intervalMilliseconds);
+            //double intervalMilliseconds = IntervalSlider.Value;
+            timer.Interval = TimeSpan.FromMilliseconds(IntervalSlider.Value);
+        }
+
+        // Reset all to default values and clear the ObservableCollection
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            zoo.Clear();
+            IntervalSlider.Value = initialIntervalMilliseconds;
+            timer.Interval = TimeSpan.FromMilliseconds(initialIntervalMilliseconds);
         }
     }
 }

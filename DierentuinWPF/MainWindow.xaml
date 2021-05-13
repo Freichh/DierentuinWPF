@@ -41,7 +41,7 @@
             <Button x:Name="AddElephantButton" Content="Olifant toevoegen" Width="120" Margin="0 0 10 0" Click="AddElephantButton_Click"/>
         </StackPanel>
 
-        <Button x:Name="ResetButton" Content="Reset" Width="90" Margin="10"/>
+        <Button x:Name="ResetButton" Content="Reset" Width="90" Margin="10" Click="ResetButton_Click"/>
 
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Margin="10" Background="Azure">
             <Button x:Name="FeedAllButton" Content="Feed All" Height="70" Margin="0 0 0 10" Click="FeedAllButton_Click"/>
@@ -51,7 +51,7 @@
         </StackPanel>
 
         <Slider x:Name="IntervalSlider" Grid.Row="2" Width="90" Margin="10" TickPlacement="BottomRight" Cursor="Hand" AutoToolTipPlacement="TopLeft" 
-                Value="1000" Maximum="2500" TickFrequency="100" SmallChange="50" ValueChanged="IntervalSlider_ValueChanged"/>
+                Value="500" Maximum="2500" TickFrequency="100" SmallChange="50" ValueChanged="IntervalSlider_ValueChanged"/>
         <Label Content="Interval in ms" HorizontalAlignment="Left" Margin="12,47,0,0" Grid.Row="2" VerticalAlignment="Top"/>
 
     </Grid>

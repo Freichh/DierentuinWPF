@@ -11,7 +11,6 @@ namespace DierentuinWPF.Models
     {
         public Animal()
         {
-            // waarom werkt energy = 100; ook?
             Energy = 100;
         }
 
@@ -26,7 +25,7 @@ namespace DierentuinWPF.Models
             set 
             { 
                 energy = value;
-                this.NotifyPropertyChanged("Energy");
+                NotifyPropertyChanged("Energy");
             }
         }
 
@@ -52,8 +51,8 @@ namespace DierentuinWPF.Models
 
         public void NotifyPropertyChanged(string propName)
         {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            // ? achter methode kijkt of niet null is, dan roept hij met invoke methode voor het ? aan
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
     }
