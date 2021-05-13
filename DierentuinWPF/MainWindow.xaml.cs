@@ -46,6 +46,7 @@ namespace DierentuinWPF
         {
             InitializeComponent();
 
+            
             /*
             // Testdieren toevoegen aan ObservableCollection zoo
             zoo.Add(new Monkey());
