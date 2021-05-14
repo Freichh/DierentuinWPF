@@ -43,8 +43,12 @@ namespace DierentuinWPF.Models
             return Energy;
         }
 
-        // (Abstracte method volgens opdracht) Elk dier verbruikt zijn eigen UseQuantity
-        public abstract int UseEnergy();
+        // Elk dier verbruikt zijn eigen UseQuantity
+        public int UseEnergy()
+        {
+            Energy -= UseQuantity;
+            return Energy;
+        }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -15,12 +15,5 @@ namespace DierentuinWPF.Models
             EatQuantity = 25;
             UseQuantity = 10;
         }
-
-        public override int UseEnergy()
-        {
-            Energy -= UseQuantity;
-            return Energy;
-        }
-
     }
 }
