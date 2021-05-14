@@ -64,16 +64,31 @@ namespace DierentuinWPF
 
             void timer_Tick(object sender, EventArgs e)
             {
+                // Als lijst leeg dan uit methode gaan
                 if (zoo.Count < 1)
                 {
                     return;
                 }
-                // kopie maken van lijst, uit kopie dieren uit halen, en andere lijst loopen
+
+                // Waarom geen error met List<T>.Reverse? Indexes blijven hetzelfde met reverse?
+                foreach (Animal animal in zoo.Reverse<Animal>())
+                {
+                    animal.UseEnergy();
+
+                    if (animal.Energy <= 0)
+                    {
+                        zoo.Remove(animal);
+                    }
+                }
+
+                /*
+                // Kopie maken van originele lijst, Kopie lijst loopen, Uit originele lijst dieren verwijderen
                 var copyZoo = zoo.ToList();
-                // foreach stelt al vast hoe vaak hij loopt
+
+                // foreach stelt van te voren al vast hoe vaak hij loopt.
+                // Weghalen tijdens loopen geeft crash, want komt niet meer overeen met wat het was
                 foreach (var animal in copyZoo)
                 {
-                    // Weghalen tijdens loopen geeft crash, want komt niet meer overeen met wat het was
                     animal.UseEnergy();
 
                     if (animal.Energy <= 0)
@@ -84,8 +99,9 @@ namespace DierentuinWPF
                 // Overschrijf lijst met lijst weggehaalde dieren
                 // Overschrijven van lijst werkt niet in dit geval (misschien met INotifyPropertyChanged
                 //zoo = new ObservableCollection<Animal>(copyZoo);
-
+                */
             }
+
 
         }
 

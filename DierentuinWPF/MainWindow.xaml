@@ -51,7 +51,7 @@
         </StackPanel>
 
         <Slider x:Name="IntervalSlider" Grid.Row="2" Width="90" Margin="10" TickPlacement="BottomRight" Cursor="Hand" AutoToolTipPlacement="TopLeft" 
-                Value="500" Maximum="2500" TickFrequency="100" SmallChange="50" ValueChanged="IntervalSlider_ValueChanged"/>
+                Value="500" Minimum="100" Maximum="2500" TickFrequency="100" SmallChange="50" ValueChanged="IntervalSlider_ValueChanged"/>
         <Label Content="Interval in ms" HorizontalAlignment="Left" Margin="12,47,0,0" Grid.Row="2" VerticalAlignment="Top"/>
 
     </Grid>
