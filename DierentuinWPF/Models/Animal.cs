@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Drawing;
-
-namespace DierentuinWPF.Models
+﻿namespace DierentuinWPF.Models
 {
     class Animal
     {
@@ -18,7 +10,7 @@ namespace DierentuinWPF.Models
         {
 
         }
-        
+
         public void Eat()
         {
             this.Energy += 25;

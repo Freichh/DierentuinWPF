@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DierentuinWPF.Models
+﻿namespace DierentuinWPF.Models
 {
     class Monkey : Animal
     {
@@ -13,6 +7,6 @@ namespace DierentuinWPF.Models
             //EnergyBar.Value = 60;
 
         }
-        
+
     }
 }
